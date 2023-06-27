@@ -1,0 +1,34 @@
+class Stacks:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+    def enqueue(self, item):
+        self.stack1.append(item)
+    def dequeue(self):
+        if not self.stack1 and not self.stack2:
+            raise IndexError("Queue is empty")
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        return self.stack2.pop()
+    def is_empty(self):
+        return not self.stack1 and not self.stack2
+    def size(self):
+        return len(self.stack1) + len(self.stack2)
+queue = Stacks()
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30)
+
+print("Dequeued item:", queue.dequeue())  
+print("Dequeued item:", queue.dequeue()) 
+queue.enqueue(40)
+print("Queue size:", queue.size()) 
+print("Is queue empty?", queue.is_empty()) 
+
+EXCEPTED OUTPUT:
+
+Dequeued item: 10
+Dequeued item: 20
+Queue size: 2
+Is queue empty? False
