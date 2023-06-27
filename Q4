@@ -1,0 +1,20 @@
+def count_pairs_with_sum(arr, target_sum):
+    count = 0
+    complement_counts = {}
+    for num in arr:
+        complement = target_sum - num
+        if complement in complement_counts:
+            count += complement_counts[complement]
+        if num in complement_counts:
+            complement_counts[num] += 1
+        else:
+            complement_counts[num] = 1
+    return count
+arr = [1, 5, 7, -1, 5,4,2,1,3]
+target_sum = 8
+result = count_pairs_with_sum(arr, target_sum)
+print("Number of pairs with sum",  ":", result)
+
+EXCEPTED OUTPUT:
+
+Number of pairs with sum : 4
