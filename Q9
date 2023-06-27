@@ -1,0 +1,30 @@
+def postfix(expression):
+    stack = []
+    for char in expression:
+        if char.isdigit():
+            stack.append(int(char))
+        else:
+            operand2 = stack.pop()
+            operand1 = stack.pop()
+
+            if char == '+':
+                result = operand1 + operand2
+            elif char == '-':
+                result = operand1 - operand2
+            elif char == '*':
+                result = operand1 * operand2
+            elif char == '/':
+                result = operand1 / operand2
+            elif char == '^':
+                result = operand1 ** operand2
+            stack.append(result)
+    return stack.pop()
+postfix_expression = "53-82+*"
+result = postfix(postfix_expression)
+print("Postfix expression:", postfix_expression)
+print("Result:", result)
+
+EXCEPTED OUTPUT:
+
+Postfix expression: 53-82+*
+Result: 20
