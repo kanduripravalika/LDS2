@@ -1,0 +1,16 @@
+def smallest_and_largest(arr, k):
+    arr.sort()  
+    kth_smallest = arr[k - 1]
+    kth_largest = arr[len(arr) - k]
+
+    return kth_smallest, kth_largest
+arr = [4, 2, 9, 6, 5, 1, 8, 3, 7]
+k = 1
+kth_smallest, kth_largest = find_kth_smallest_and_largest(arr, k)
+print("Kth Smallest:", kth_smallest)
+print("Kth Largest:", kth_largest)
+
+EXCEPTED OUTPUT:
+
+Kth Smallest: 1
+Kth Largest: 9
